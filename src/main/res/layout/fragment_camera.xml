@@ -1,0 +1,89 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:windowBackground">
+
+    <FrameLayout
+        android:id="@+id/fContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/viewFinder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvVideoInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white_semi_transparent"
+        android:padding="5dp"
+        android:text="Press and hold capture button to record video."
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnCameraCapture"
+        tools:text="Press and hold capture button to record video." />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnCameraCapture"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/camera_buttom_bg"
+        android:elevation="2dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.99" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnCameraCaptureInner"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:background="@drawable/camera_buttom_fg"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/btnCameraCapture"
+        app:layout_constraintEnd_toEndOf="@+id/btnCameraCapture"
+        app:layout_constraintStart_toStartOf="@+id/btnCameraCapture"
+        app:layout_constraintTop_toTopOf="@+id/btnCameraCapture" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnSwapCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_baseline_switch_camera_24"
+        app:layout_constraintBottom_toBottomOf="@+id/btnCameraCapture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCameraCapture"
+        app:layout_constraintTop_toTopOf="@+id/btnCameraCapture" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnFlashToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_baseline_flash_off_24"
+        app:layout_constraintBottom_toBottomOf="@+id/btnCameraCapture"
+        app:layout_constraintEnd_toStartOf="@+id/btnCameraCapture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnCameraCapture" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
