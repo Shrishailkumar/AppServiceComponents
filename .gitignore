@@ -3,3 +3,6 @@
 .idea
 .gradle
 .idea/*
+.gitignore/
+.idea/
+.gradle/
