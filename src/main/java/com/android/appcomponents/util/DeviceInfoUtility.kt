@@ -6,8 +6,9 @@ import com.android.appcomponents.model.DeviceInfo
 
 object DeviceInfoUtility {
 
-    public fun getDeviceInfo(): MutableLiveData<DeviceInfo> {
-        val deviceInfo = MutableLiveData<DeviceInfo>()
+     fun getDeviceInfo(): MutableLiveData<DeviceInfo> {
+
+         val deviceInfo = MutableLiveData<DeviceInfo>()
 
         val deviceData = DeviceInfo(
             Build.VERSION.SDK, Build.BOARD, Build.FINGERPRINT, Build.HOST, Build.USER,
@@ -16,6 +17,7 @@ object DeviceInfoUtility {
         )
 
         deviceInfo.postValue(deviceData)
+
         return deviceInfo
     }
 }
