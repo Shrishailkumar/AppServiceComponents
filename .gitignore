@@ -1,7 +1,7 @@
 /build
-.gitignore
-.idea
-.gradle
+/.gitignore
+/.idea
+/.gradle
 .idea/*
 .gitignore/
 .idea/
