@@ -1,0 +1,6 @@
+<resources>
+    <string name="searchTerm">search</string>
+    <string name="sort">stars</string>
+    <string name="order">desc</string>
+
+</resources>
