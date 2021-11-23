@@ -1,6 +1,4 @@
 <resources>
-    <string name="searchTerm">search</string>
-    <string name="sort">stars</string>
-    <string name="order">desc</string>
 
+    <string name="MAP_API_KEY">AIzaSyBF3gJyEjy9tO1D_dYBEB_4Vo1JDbW6H7s</string>
 </resources>
