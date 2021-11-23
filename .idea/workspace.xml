@@ -59,27 +59,35 @@
       <option name="project" value="LOCAL" />
       <updated>1637665307502</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="elastic search code merge done.">
+      <created>1637665900072</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1637665900072</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Elastic Search code merge done." />
     <MESSAGE value="code merge." />
-    <option name="LAST_COMMIT_MESSAGE" value="code merge." />
+    <MESSAGE value="elastic search code merge done." />
+    <option name="LAST_COMMIT_MESSAGE" value="elastic search code merge done." />
   </component>
   <component name="WindowStateProjectService">
     <state x="200" y="96" key="#PSD" timestamp="1635938454449">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="200" y="96" key="#PSD/0.0.1366.728@0.0.1366.728" timestamp="1635938454449" />
-    <state x="298" y="0" key="CommitChangelistDialog2" timestamp="1637665305311">
+    <state x="298" y="0" key="CommitChangelistDialog2" timestamp="1637666145993">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="298" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1637665305311" />
-    <state x="275" y="85" key="Vcs.Push.Dialog.v2" timestamp="1637665309861">
+    <state x="298" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1637666145993" />
+    <state x="275" y="85" key="Vcs.Push.Dialog.v2" timestamp="1637665902769">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="85" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1637665309861" />
+    <state x="275" y="85" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1637665902769" />
     <state x="472" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1635936182668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
