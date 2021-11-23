@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4baa2614-165e-4076-95db-f746c81b2d20" name="Default Changelist" comment="code merge.">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+    <list default="true" id="4baa2614-165e-4076-95db-f746c81b2d20" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,26 +52,34 @@
       <option name="project" value="LOCAL" />
       <updated>1637665165011</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="code merge.">
+      <created>1637665307502</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1637665307502</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Elastic Search code merge done." />
-    <option name="LAST_COMMIT_MESSAGE" value="Elastic Search code merge done." />
+    <MESSAGE value="code merge." />
+    <option name="LAST_COMMIT_MESSAGE" value="code merge." />
   </component>
   <component name="WindowStateProjectService">
     <state x="200" y="96" key="#PSD" timestamp="1635938454449">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="200" y="96" key="#PSD/0.0.1366.728@0.0.1366.728" timestamp="1635938454449" />
-    <state x="298" y="0" key="CommitChangelistDialog2" timestamp="1637665162626">
+    <state x="298" y="0" key="CommitChangelistDialog2" timestamp="1637665305311">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="298" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1637665162626" />
-    <state x="275" y="85" key="Vcs.Push.Dialog.v2" timestamp="1637665179674">
+    <state x="298" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1637665305311" />
+    <state x="275" y="85" key="Vcs.Push.Dialog.v2" timestamp="1637665309861">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="85" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1637665179674" />
+    <state x="275" y="85" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1637665309861" />
     <state x="472" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1635936182668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
