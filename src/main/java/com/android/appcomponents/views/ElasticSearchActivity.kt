@@ -14,7 +14,7 @@ import com.android.appcomponents.R
 import com.android.appcomponents.adapter.ElasticSearchAdapter
 import com.android.appcomponents.interfaces.APIListener
 import com.android.appcomponents.interfaces.NetworkAPI
-import com.android.appcomponents.util.Util
+import com.android.appcomponents.util.ElasticSearchUtil
 import com.android.appcomponents.viewmodel.ElasticSearchViewModel
 import com.android.appcomponents.viewmodel.ElasticSearchViewModelFactory
 import com.android.appcomponents.viewmodel.NetworkAPIViewModel
@@ -101,7 +101,7 @@ class ElasticSearchActivity : AppCompatActivity(), APIListener {
     }
 
     private fun getRepoAPI() {
-        if (Util.checkNetwork(this)) {
+        if (ElasticSearchUtil.checkNetwork(this)) {
             if (!TextUtils.isEmpty(etSearch.text)) {
                 etSearch.setText("")
             }

@@ -6,7 +6,7 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import android.util.Log
 
-object Util {
+object ElasticSearchUtil {
 
     fun checkNetwork(context: Context?): Boolean {
         if (context == null) return false
