@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4baa2614-165e-4076-95db-f746c81b2d20" name="Default Changelist" comment="" />
+    <list default="true" id="4baa2614-165e-4076-95db-f746c81b2d20" name="Default Changelist" comment="code merge.">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,13 +45,33 @@
       <option name="presentableId" value="Default" />
       <updated>1635935076647</updated>
     </task>
+    <task id="LOCAL-00001" summary="Elastic Search code merge done.">
+      <created>1637665165011</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1637665165011</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Elastic Search code merge done." />
+    <option name="LAST_COMMIT_MESSAGE" value="Elastic Search code merge done." />
   </component>
   <component name="WindowStateProjectService">
     <state x="200" y="96" key="#PSD" timestamp="1635938454449">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="200" y="96" key="#PSD/0.0.1366.728@0.0.1366.728" timestamp="1635938454449" />
+    <state x="298" y="0" key="CommitChangelistDialog2" timestamp="1637665162626">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="298" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1637665162626" />
+    <state x="275" y="85" key="Vcs.Push.Dialog.v2" timestamp="1637665179674">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="85" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1637665179674" />
     <state x="472" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1635936182668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
