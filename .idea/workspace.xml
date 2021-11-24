@@ -66,7 +66,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637665900072</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="elastic search code merge done.">
+      <created>1637666215226</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1637666215226</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -80,14 +87,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="200" y="96" key="#PSD/0.0.1366.728@0.0.1366.728" timestamp="1635938454449" />
-    <state x="298" y="0" key="CommitChangelistDialog2" timestamp="1637666145993">
+    <state x="298" y="0" key="CommitChangelistDialog2" timestamp="1637666212890">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="298" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1637666145993" />
-    <state x="275" y="85" key="Vcs.Push.Dialog.v2" timestamp="1637665902769">
+    <state x="298" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1637666212890" />
+    <state x="275" y="85" key="Vcs.Push.Dialog.v2" timestamp="1637666218094">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="85" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1637665902769" />
+    <state x="275" y="85" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1637666218094" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1637731748177">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1637731748177" />
     <state x="472" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1635936182668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
