@@ -1,8 +1,8 @@
 package com.android.appcomponents.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.android.appcomponents.interfaces.APIListener
-import com.android.appcomponents.interfaces.NetworkAPI
+import com.android.appcomponents.network.interfaces.APIListener
+import com.android.appcomponents.network.interfaces.NetworkAPI
 import kotlinx.coroutines.*
 
 class ElasticSearchViewModel(val networkAPI: NetworkAPI) : ViewModel() {
@@ -12,8 +12,10 @@ class ElasticSearchViewModel(val networkAPI: NetworkAPI) : ViewModel() {
         apiListener?.onStarted()
         CoroutineScope(Dispatchers.Main).launch {
             try {
-                val response = networkAPI.getRequest(endPoint, queryParam)
-                apiListener?.onSuccessResponse(response)
+                val response = endPoint?.let { networkAPI.getRequest(it, queryParam) }
+                if (response != null) {
+                    apiListener?.onSuccessResponse(response)
+                }
 
             } catch (e: Exception) {
                 apiListener?.onErrorResponse("Error Occurred: $e.localizedMessage")

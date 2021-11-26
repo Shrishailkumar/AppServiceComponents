@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.android.appcomponents.R
 import com.android.appcomponents.adapter.ElasticSearchAdapter
-import com.android.appcomponents.interfaces.APIListener
-import com.android.appcomponents.interfaces.NetworkAPI
+import com.android.appcomponents.network.interfaces.APIListener
+import com.android.appcomponents.network.interfaces.NetworkAPI
 import com.android.appcomponents.util.ElasticSearchUtil
 import com.android.appcomponents.viewmodel.ElasticSearchViewModel
 import com.android.appcomponents.viewmodel.ElasticSearchViewModelFactory
@@ -32,6 +32,7 @@ class ElasticSearchActivity : AppCompatActivity(), APIListener {
     var endPoint: String? = null
     var queryHashMap: HashMap<String, String>? = null
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_elastic_search)
@@ -79,15 +80,16 @@ class ElasticSearchActivity : AppCompatActivity(), APIListener {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun configureViewModel() {
         val networkAPIViewModel: NetworkAPIViewModel = ViewModelProvider(
-            this, NetworkAPIViewModelFactory(baseURL!!)
+            this, NetworkAPIViewModelFactory(baseURL!!,this)
         ).get(NetworkAPIViewModel::class.java)
 
         val retrofitInstance = networkAPIViewModel.getNetworkClient().create(NetworkAPI::class.java)
 
         elasticSearchViewModel =
-            ViewModelProvider(this, ElasticSearchViewModelFactory(this, retrofitInstance)).get(
+            ViewModelProvider(this, ElasticSearchViewModelFactory(retrofitInstance)).get(
                 ElasticSearchViewModel::class.java
             )
 
