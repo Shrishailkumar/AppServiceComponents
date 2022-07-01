@@ -19,7 +19,6 @@ import com.android.appcomponents.viewmodel.ElasticSearchViewModel
 import com.android.appcomponents.viewmodel.ElasticSearchViewModelFactory
 import com.android.appcomponents.viewmodel.NetworkAPIViewModel
 import com.android.appcomponents.viewmodel.NetworkAPIViewModelFactory
-import com.google.gson.JsonArray
 import kotlinx.android.synthetic.main.activity_elastic_search.*
 import okhttp3.ResponseBody
 import org.json.JSONArray
@@ -40,7 +39,7 @@ class ElasticSearchActivity : AppCompatActivity(), APIListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_elastic_search)
         val intent = intent
-//        val layoutType = intent.getStringExtra("layout")
+        val layout = getIntent().getIntExtra("layout",0)
         baseURL = intent.getStringExtra("baseUrl")
         endPoint = intent.getStringExtra("endPoint")
         repoAdapter = ElasticSearchAdapter(this)
@@ -93,7 +92,7 @@ class ElasticSearchActivity : AppCompatActivity(), APIListener {
     @RequiresApi(Build.VERSION_CODES.M)
     private fun configureViewModel() {
         val networkAPIViewModel: NetworkAPIViewModel = ViewModelProvider(
-            this, NetworkAPIViewModelFactory(baseURL!!,this)
+            this, NetworkAPIViewModelFactory(baseURL!!, this)
         ).get(NetworkAPIViewModel::class.java)
 
         val retrofitInstance = networkAPIViewModel.getNetworkClient().create(NetworkAPI::class.java)

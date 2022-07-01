@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4baa2614-165e-4076-95db-f746c81b2d20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/android/appcomponents/views/ElasticSearchActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/android/appcomponents/views/ElasticSearchActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,29 +91,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="elastic search code merge done." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="200" y="96" key="#PSD" timestamp="1635938454449">
+    <state x="472" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1656654876980">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="200" y="96" key="#PSD/0.0.1366.728@0.0.1366.728" timestamp="1635938454449" />
-    <state x="298" y="0" key="CommitChangelistDialog2" timestamp="1637731767757">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="298" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1637731767757" />
-    <state x="275" y="85" key="Vcs.Push.Dialog.v2" timestamp="1637731774860">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="275" y="85" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1637731774860" />
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1638890002458">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1638890002458" />
-    <state x="472" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1637910133713">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="472" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1637910133713" />
-    <state x="379" y="0" width="607" height="728" key="find.popup" timestamp="1635936546477">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="379" y="0" width="607" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1635936546477" />
+    <state x="472" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1656654876980" />
   </component>
 </project>
