@@ -19,6 +19,7 @@ import com.android.appcomponents.viewmodel.ElasticSearchViewModel
 import com.android.appcomponents.viewmodel.ElasticSearchViewModelFactory
 import com.android.appcomponents.viewmodel.NetworkAPIViewModel
 import com.android.appcomponents.viewmodel.NetworkAPIViewModelFactory
+import com.google.gson.JsonArray
 import kotlinx.android.synthetic.main.activity_elastic_search.*
 import okhttp3.ResponseBody
 import org.json.JSONArray
@@ -31,18 +32,23 @@ class ElasticSearchActivity : AppCompatActivity(), APIListener {
     var baseURL: String? = null
     var endPoint: String? = null
     var queryHashMap: HashMap<String, String>? = null
+    var searchQuery: String? = null
+    var listData: JSONArray? =null
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_elastic_search)
         val intent = intent
-        val layoutType = intent.getStringExtra("layout")
+//        val layoutType = intent.getStringExtra("layout")
         baseURL = intent.getStringExtra("baseUrl")
         endPoint = intent.getStringExtra("endPoint")
         repoAdapter = ElasticSearchAdapter(this)
         queryHashMap = intent.getSerializableExtra("map") as HashMap<String, String>?
-        if (layoutType.equals("linear", true)) {
+        searchQuery = queryHashMap?.get("q")
+        rvLinear.adapter = repoAdapter
+
+        /* if (layoutType.equals("linear", true)) {
             rvGrid.visibility = View.GONE
             rvLinear.visibility = View.VISIBLE
             rvLinear.adapter = repoAdapter
@@ -50,7 +56,8 @@ class ElasticSearchActivity : AppCompatActivity(), APIListener {
             rvLinear.visibility = View.GONE
             rvGrid.visibility = View.VISIBLE
             rvGrid.adapter = repoAdapter
-        }
+        }*/
+
         configureViewModel()
     }
 
@@ -59,10 +66,10 @@ class ElasticSearchActivity : AppCompatActivity(), APIListener {
         etSearch.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(editable: Editable?) {
                 if (editable.toString().isNotBlank()) {
-                    filterByRepoName(editable)
+                    filterBySearchText(editable)
                 } else if (editable.toString().isEmpty()) {
-                   // repoAdapter?.addList(repoList)
-                   // repoSearchList.clear()
+                    searchQuery?.let { queryHashMap?.put("q", it) }
+                    elasticSearchViewModel?.getDataFromServer(endPoint, queryHashMap)
                 }
             }
 
@@ -75,7 +82,10 @@ class ElasticSearchActivity : AppCompatActivity(), APIListener {
         })
     }
 
-    private fun filterByRepoName(s: Editable?) {
+    private fun filterBySearchText(searchText: Editable?) {
+
+        queryHashMap?.put("q", searchText.toString())
+        elasticSearchViewModel?.getDataFromServer(endPoint, queryHashMap)
 
     }
 
@@ -127,6 +137,7 @@ class ElasticSearchActivity : AppCompatActivity(), APIListener {
             val key = keysItr.next()
             val value: Any = jsonObj.get(key)
             if (value is JSONArray) {
+                value.also { listData = it }
                 repoAdapter?.addList(value)
             }
         }

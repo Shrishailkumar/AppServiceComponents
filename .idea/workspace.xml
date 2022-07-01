@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4baa2614-165e-4076-95db-f746c81b2d20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/android/appcomponents/interfaces/APIListener.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/android/appcomponents/interfaces/NetworkAPI.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/android/appcomponents/util/NetworkUtility.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/android/appcomponents/viewmodel/ElasticSearchViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/android/appcomponents/viewmodel/ElasticSearchViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/android/appcomponents/viewmodel/ElasticSearchViewModelFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/android/appcomponents/viewmodel/ElasticSearchViewModelFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/android/appcomponents/views/ElasticSearchActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/android/appcomponents/views/ElasticSearchActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,10 +102,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="85" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1637731774860" />
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1637910082728">
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1638890002458">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1637910082728" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1638890002458" />
     <state x="472" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1637910133713">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
