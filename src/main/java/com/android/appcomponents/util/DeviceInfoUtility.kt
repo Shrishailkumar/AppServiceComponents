@@ -25,7 +25,7 @@ object DeviceInfoUtility {
 
         val deviceData = DeviceInfo(
             Build.VERSION.SDK, Build.BOARD, Build.FINGERPRINT, Build.HOST, Build.USER,
-            Build.TYPE, Build.BRAND, Build.MANUFACTURER, Build.ID, Build.MODEL, Build.USER,
+            Build.TYPE, Build.BRAND, Build.MANUFACTURER, Build.ID, Build.MODEL, Build.SERIAL,
             Build.DEVICE,Build.PRODUCT,Build.BOOTLOADER,Build.DISPLAY,Build.HARDWARE
         )
 
