@@ -44,24 +44,7 @@ class ElasticSearchActivity : AppCompatActivity(), APIListener {
         queryHashMap = intent.getSerializableExtra("map") as HashMap<String, String>?
         searchQuery = queryHashMap?.get("q")
         rvLinear.adapter = repoAdapter
-        rvLinear.adapter?.notifyDataSetChanged()
 
-        configureViewModel()
-        /*val intent = intent
-        val layoutType = intent.getStringExtra("layout")
-        baseURL = intent.getStringExtra("baseUrl")
-        endPoint = intent.getStringExtra("endPoint")
-        repoAdapter = ElasticSearchAdapter(this)
-        queryHashMap = intent.getSerializableExtra("map") as HashMap<String, String>?
-        if (layoutType.equals("linear", true)) {
-            rvGrid.visibility = View.GONE
-            rvLinear.visibility = View.VISIBLE
-            rvLinear.adapter = repoAdapter
-        } else if (layoutType.equals("grid", true)) {
-            rvLinear.visibility = View.GONE
-            rvGrid.visibility = View.VISIBLE
-            rvGrid.adapter = repoAdapter
-        }*/
         configureViewModel()
     }
 
