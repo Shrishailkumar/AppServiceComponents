@@ -7,14 +7,18 @@ import androidx.lifecycle.ViewModel
 import com.android.appcomponents.model.EncryptionData
 import com.android.appcomponents.model.SecreteKeyData
 import com.android.appcomponents.util.EncryptionUtility
-import javax.crypto.SecretKey
 
 class EncryptionViewModal : ViewModel() {
     val encryptionUtility = EncryptionUtility
 
-    fun aes256Algoritham(strToEncrypt: String,secreteKey:SecretKey?): MutableLiveData<EncryptionData> {
+    fun aes256Algoritham(algorithm :String,strToEncrypt: String): MutableLiveData<EncryptionData> {
 
-        return encryptionUtility.encryptAesAlgoritham(strToEncrypt,secreteKey);
+        return encryptionUtility.encryptAesAlgoritham(algorithm,strToEncrypt);
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun aes256DecryptAlgoritham(algorithm :String, strToEncrypt: String): MutableLiveData<EncryptionData>? {
+
+        return encryptionUtility.decryptAesAlgoritham(algorithm,strToEncrypt);
     }
     fun hMacSha256Algoritham(key: String, data: String): MutableLiveData<EncryptionData> {
 

@@ -221,7 +221,7 @@ internal class CameraCaptureFragment : Fragment() {
                             )?.addToBackStack(CameraCapturePreviewFragment::class.java.name)?.commit()
                         } else {
                             onImageCaptureCallback?.onImageCaptured(savedUri)
-                            activity?.supportFragmentManager?.popBackStack()
+                            //activity?.supportFragmentManager?.popBackStack()
                         }
                     }
                 })

@@ -7,51 +7,47 @@ import com.android.appcomponents.model.EncryptionData
 import com.android.appcomponents.model.SecreteKeyData
 import java.io.FileInputStream
 import java.io.IOException
-import java.lang.IllegalArgumentException
-import java.security.DigestInputStream
-import java.security.InvalidKeyException
-import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
+import java.security.*
 import java.util.*
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.Mac
 import javax.crypto.SecretKey
+import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
 object EncryptionUtility {
-
-
-    fun encryptAesAlgoritham(plaintext: String, key: SecretKey?): MutableLiveData<EncryptionData> {
+    fun encryptAesAlgoritham(algorithm: String?, input: String): MutableLiveData<EncryptionData> {
         val encryptionData = MutableLiveData<EncryptionData>()
-        val cipherText = Cipher.getInstance("AES")
-        val keySpec = SecretKeySpec(key?.encoded, "AES")
-        cipherText.init(Cipher.ENCRYPT_MODE, keySpec)
-        cipherText.doFinal(plaintext.toByteArray())
+        val cipher = Cipher.getInstance(algorithm)
+        cipher.init(Cipher.ENCRYPT_MODE, generateKey(), generateIv())
+        val cipherText = cipher.doFinal(input.toByteArray())
         val encriptedData = EncryptionData(cipherText.toString());
         encryptionData.postValue(encriptedData)
         return encryptionData
-
     }
 
-    fun decryptAesAlgoritham(
-        cipherText: ByteArray?,
-        key: SecretKey
-    ): MutableLiveData<EncryptionData>? {
-        val decryptionData = MutableLiveData<EncryptionData>()
-        try {
-            val cipher = Cipher.getInstance("AES")
-            val keySpec = SecretKeySpec(key.encoded, "AES")
-            cipher.init(Cipher.DECRYPT_MODE, keySpec)
-            val decryptedText = cipher.doFinal(cipherText)
-            val decryptedData = EncryptionData(decryptedText.toString());
-            decryptionData.postValue(decryptedData)
-            return decryptionData
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-        return null
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun decryptAesAlgoritham(algorithm: String?, encryptedText: String?): MutableLiveData<EncryptionData> {
+        val encryptionData = MutableLiveData<EncryptionData>()
+        val cipher = Cipher.getInstance(algorithm)
+        cipher.init(Cipher.DECRYPT_MODE, generateKey(), generateIv())
+        val plainText = cipher.doFinal(Base64.getDecoder().decode(encryptedText))
+        val encriptedData = EncryptionData(plainText.toString());
+        encryptionData.postValue(encriptedData)
+        return encryptionData
     }
+    fun generateKey(): SecretKey? {
+        val keyGenerator = KeyGenerator.getInstance("AES")
+        keyGenerator.init(128)
+        return keyGenerator.generateKey()
+    }
+    fun generateIv(): IvParameterSpec? {
+        val iv = ByteArray(16)
+        SecureRandom().nextBytes(iv)
+        return IvParameterSpec(iv)
+    }
+
 
     fun hMacSha256Algoritham(key: String, data: String): MutableLiveData<EncryptionData> {
         val encriptionData = MutableLiveData<EncryptionData>()
