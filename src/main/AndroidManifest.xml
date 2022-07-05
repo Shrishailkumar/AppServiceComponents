@@ -11,6 +11,16 @@
     <application>
         <activity
             android:name=".views.ElasticSearchActivity"/>
+
+        <activity
+            android:name=".views.LocationRouteMapActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA0nenNuNUXv0CWB5FsCmoUksobg5idk38">
+
+        </meta-data>
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -23,17 +33,6 @@
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-    <application>
-        <activity
-            android:name=".views.LocationRouteMapActivity"
-            android:exported="false" />
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyA0nenNuNUXv0CWB5FsCmoUksobg5idk38">
-
-        </meta-data>
-    </application>
 
 
 

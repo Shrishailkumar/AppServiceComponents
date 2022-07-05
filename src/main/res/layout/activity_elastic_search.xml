@@ -42,6 +42,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/inflate_search_item"
         app:layout_constraintTop_toBottomOf="@+id/etSearch"
         tools:itemCount="10" />
 

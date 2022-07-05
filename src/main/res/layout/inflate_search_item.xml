@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="@dimen/dp_4"
+    app:cardCornerRadius="@dimen/dp_4"
+    android:theme="@style/Theme.MaterialComponents.Light"
+    android:layout_marginStart="@dimen/dp_8"
+    android:layout_marginTop="@dimen/dp_8"
+    android:layout_marginEnd="@dimen/dp_8"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clHead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivOwner"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_80"
+            android:scaleType="fitXY"
+            tools:src="@tools:sample/avatars"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRepoTitle"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/dp_12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivOwner"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Sample Name"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_marginLeft="@dimen/dp_12" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRepoDesc"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_6"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="@id/tvRepoTitle"
+            app:layout_constraintStart_toStartOf="@+id/tvRepoTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvRepoTitle"
+            tools:text="Repository Description Description Description Description Description Description Description Description Description" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRepoWatcher"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_6"
+            android:drawablePadding="@dimen/dp_6"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="@+id/tvRepoDesc"
+            app:layout_constraintTop_toBottomOf="@+id/tvRepoDesc"
+            tools:text="30" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dp_8"
+    android:layout_marginTop="@dimen/dp_8"
+    android:layout_marginEnd="@dimen/dp_8"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/dp_4"
+    app:cardElevation="@dimen/dp_4">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivOwner"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_80"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRepoTitle"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivOwner"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Sample Name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRepoDesc"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_6"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="@id/tvRepoTitle"
+            app:layout_constraintStart_toStartOf="@+id/tvRepoTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvRepoTitle"
+            tools:text="Repository Description Description Description Description Description" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>-->

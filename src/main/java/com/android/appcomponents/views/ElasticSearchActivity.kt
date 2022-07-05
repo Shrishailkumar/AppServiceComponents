@@ -44,6 +44,7 @@ class ElasticSearchActivity : AppCompatActivity(), APIListener {
         queryHashMap = intent.getSerializableExtra("map") as HashMap<String, String>?
         searchQuery = queryHashMap?.get("q")
         rvLinear.adapter = repoAdapter
+        rvLinear.adapter?.notifyDataSetChanged()
 
         configureViewModel()
     }
