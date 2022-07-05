@@ -1,4 +1,9 @@
 <resources>
 
     <string name="MAP_API_KEY">AIzaSyBF3gJyEjy9tO1D_dYBEB_4Vo1JDbW6H7s</string>
+    <string name="done">Done</string>
+    <string name="success_body">Success</string>
+    <string name="title">Title</string>
+    <string name="alert_dialog_icon">Alert Dialog Icon</string>
+    <string name="toast_icon">Toast Icon</string>
 </resources>

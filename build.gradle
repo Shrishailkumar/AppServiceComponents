@@ -86,4 +86,7 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-core:2.16.0'
     implementation 'com.google.android.exoplayer:exoplayer-dash:2.16.0'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.16.0'
+
+    // CardView
+    implementation 'androidx.cardview:cardview:1.0.0'
 }
