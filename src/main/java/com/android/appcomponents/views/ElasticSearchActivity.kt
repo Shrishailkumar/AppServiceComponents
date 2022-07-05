@@ -38,16 +38,22 @@ class ElasticSearchActivity : AppCompatActivity(), APIListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_elastic_search)
-        val intent = intent
-        val layout = getIntent().getIntExtra("layout",0)
         baseURL = intent.getStringExtra("baseUrl")
         endPoint = intent.getStringExtra("endPoint")
         repoAdapter = ElasticSearchAdapter(this)
         queryHashMap = intent.getSerializableExtra("map") as HashMap<String, String>?
         searchQuery = queryHashMap?.get("q")
         rvLinear.adapter = repoAdapter
+        rvLinear.adapter?.notifyDataSetChanged()
 
-        /* if (layoutType.equals("linear", true)) {
+        configureViewModel()
+        /*val intent = intent
+        val layoutType = intent.getStringExtra("layout")
+        baseURL = intent.getStringExtra("baseUrl")
+        endPoint = intent.getStringExtra("endPoint")
+        repoAdapter = ElasticSearchAdapter(this)
+        queryHashMap = intent.getSerializableExtra("map") as HashMap<String, String>?
+        if (layoutType.equals("linear", true)) {
             rvGrid.visibility = View.GONE
             rvLinear.visibility = View.VISIBLE
             rvLinear.adapter = repoAdapter
@@ -56,7 +62,6 @@ class ElasticSearchActivity : AppCompatActivity(), APIListener {
             rvGrid.visibility = View.VISIBLE
             rvGrid.adapter = repoAdapter
         }*/
-
         configureViewModel()
     }
 
@@ -136,8 +141,8 @@ class ElasticSearchActivity : AppCompatActivity(), APIListener {
             val key = keysItr.next()
             val value: Any = jsonObj.get(key)
             if (value is JSONArray) {
-                value.also { listData = it }
                 repoAdapter?.addList(value)
+                repoAdapter?.notifyDataSetChanged()
             }
         }
         addSearchListener()
