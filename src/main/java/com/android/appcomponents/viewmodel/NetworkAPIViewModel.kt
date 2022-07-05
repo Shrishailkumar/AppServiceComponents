@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.android.appcomponents.util.NetworkUtility
 import com.android.appcomponents.util.Utility
-import com.android.appcomponents.util.VolleyNetworkManager
+import com.android.appcomponents.util.networkUtils.VolleyNetworkManager
 import retrofit2.Retrofit
 
 class NetworkAPIViewModel(private val base_url: String, private val context: Context): ViewModel() {
