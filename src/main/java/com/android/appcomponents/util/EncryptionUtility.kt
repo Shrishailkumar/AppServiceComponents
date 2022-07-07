@@ -17,26 +17,36 @@ import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
 object EncryptionUtility {
-    fun encryptAesAlgoritham(algorithm: String?, input: String): MutableLiveData<EncryptionData> {
+
+
+
+    fun aesEncryptAlgorithm(plaintext: ByteArray?,key: SecretKey,IV: ByteArray?): MutableLiveData<EncryptionData> {
         val encryptionData = MutableLiveData<EncryptionData>()
-        val cipher = Cipher.getInstance(algorithm)
-        cipher.init(Cipher.ENCRYPT_MODE, generateKey(), generateIv())
-        val cipherText = cipher.doFinal(input.toByteArray())
-        val encriptedData = EncryptionData(cipherText.toString());
+        val cipher = Cipher.getInstance("AES")
+        val keySpec =SecretKeySpec(key.encoded, "AES")
+        val ivSpec = IvParameterSpec(IV)
+        cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec)
+        val cipherText = cipher.doFinal(plaintext)
+        val encriptedData = EncryptionData(cipherText.toString())
         encryptionData.postValue(encriptedData)
         return encryptionData
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun decryptAesAlgoritham(algorithm: String?, encryptedText: String?): MutableLiveData<EncryptionData> {
-        val encryptionData = MutableLiveData<EncryptionData>()
-        val cipher = Cipher.getInstance(algorithm)
-        cipher.init(Cipher.DECRYPT_MODE, generateKey(), generateIv())
-        val plainText = cipher.doFinal(Base64.getDecoder().decode(encryptedText))
-        val encriptedData = EncryptionData(plainText.toString());
-        encryptionData.postValue(encriptedData)
-        return encryptionData
+    fun aesDecrytAlgorithm(cipherText: ByteArray?, key: SecretKey, IV: ByteArray?): MutableLiveData<EncryptionData> {
+            val encryptionData = MutableLiveData<EncryptionData>()
+            val cipher = Cipher.getInstance("AES")
+            val keySpec = SecretKeySpec(key.encoded, "AES")
+            val ivSpec = IvParameterSpec(IV)
+            cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec)
+
+            val decryptedText = cipher.doFinal(cipherText)
+            val encriptedData = EncryptionData(decryptedText.toString())
+            encryptionData.postValue(encriptedData)
+            return encryptionData
+
     }
+
+
     fun generateKey(): SecretKey? {
         val keyGenerator = KeyGenerator.getInstance("AES")
         keyGenerator.init(128)
@@ -51,7 +61,7 @@ object EncryptionUtility {
 
     fun hMacSha256Algoritham(key: String, data: String): MutableLiveData<EncryptionData> {
         val encriptionData = MutableLiveData<EncryptionData>()
-        var returnString: String = ""
+        var returnString = ""
         try {
             val secretKey = SecretKeySpec(key.toByteArray(), "HmacSHA256")
             val mac = Mac.getInstance(secretKey.algorithm)
@@ -63,7 +73,7 @@ object EncryptionUtility {
         } catch (ignore: InvalidKeyException) {
 
         }
-        val encriptedData = EncryptionData(returnString);
+        val encriptedData = EncryptionData(returnString)
         encriptionData.postValue(encriptedData)
         return encriptionData
     }
@@ -88,7 +98,7 @@ object EncryptionUtility {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        val secreteKeyValue = SecreteKeyData(secretKey);
+        val secreteKeyValue = SecreteKeyData(secretKey)
         secretKeyData.postValue(secreteKeyValue)
         return secretKeyData
     }
@@ -97,7 +107,7 @@ object EncryptionUtility {
         val encriptionData = MutableLiveData<EncryptionData>()
         val encoder: Base64.Encoder = Base64.getEncoder()
         val encodedBytes: ByteArray = encoder.encode(plainText.toByteArray())
-        val encriptedData = EncryptionData(String(encodedBytes));
+        val encriptedData = EncryptionData(String(encodedBytes))
         encriptionData.postValue(encriptedData)
         return encriptionData
     }
@@ -107,9 +117,9 @@ object EncryptionUtility {
         val decreptionData = MutableLiveData<EncryptionData>()
         val decoder: Base64.Decoder = Base64.getDecoder()
         val decodedBytes: ByteArray = decoder.decode(encodedString)
-        val encriptedData = EncryptionData(String(decodedBytes));
+        val encriptedData = EncryptionData(String(decodedBytes))
         decreptionData.postValue(encriptedData)
-        return decreptionData;
+        return decreptionData
     }
 
     fun md5Digest(input: String): MutableLiveData<EncryptionData> {
@@ -136,7 +146,7 @@ object EncryptionUtility {
         try {
             FileInputStream(filePath).use { `is` ->
                 DigestInputStream(`is`, md).use { dis ->
-                    while (dis.read() !== -1);
+                    while (dis.read() !== -1)
                     md = dis.getMessageDigest()
                 }
             }

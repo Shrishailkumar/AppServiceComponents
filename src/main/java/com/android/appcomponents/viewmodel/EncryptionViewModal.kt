@@ -7,39 +7,40 @@ import androidx.lifecycle.ViewModel
 import com.android.appcomponents.model.EncryptionData
 import com.android.appcomponents.model.SecreteKeyData
 import com.android.appcomponents.util.EncryptionUtility
+import javax.crypto.SecretKey
 
 class EncryptionViewModal : ViewModel() {
     val encryptionUtility = EncryptionUtility
 
-    fun aes256Algoritham(algorithm :String,strToEncrypt: String): MutableLiveData<EncryptionData> {
+    fun aesEncryptAlgorithm(plaintext: ByteArray?, key: SecretKey, IV: ByteArray?): MutableLiveData<EncryptionData> {
 
-        return encryptionUtility.encryptAesAlgoritham(algorithm,strToEncrypt);
+        return encryptionUtility.aesEncryptAlgorithm(plaintext,key,IV)
     }
     @RequiresApi(Build.VERSION_CODES.O)
-    fun aes256DecryptAlgoritham(algorithm :String, strToEncrypt: String): MutableLiveData<EncryptionData>? {
+    fun aesDecryptionAlgorithm(cipherText: ByteArray?, key: SecretKey, IV: ByteArray?): MutableLiveData<EncryptionData>? {
 
-        return encryptionUtility.decryptAesAlgoritham(algorithm,strToEncrypt);
+        return encryptionUtility.aesDecrytAlgorithm(cipherText,key,IV)
     }
     fun hMacSha256Algoritham(key: String, data: String): MutableLiveData<EncryptionData> {
 
         return encryptionUtility.hMacSha256Algoritham(key,data);
     }
     fun generateSecreteKey(biteValue: Int): MutableLiveData<SecreteKeyData>? {
-        return encryptionUtility.generateSecreteKey(biteValue);
+        return encryptionUtility.generateSecreteKey(biteValue)
     }
     @RequiresApi(Build.VERSION_CODES.O)
     fun toBase64Encode(plainText: String): MutableLiveData<EncryptionData> {
-        return encryptionUtility.toBase64Encode(plainText);
+        return encryptionUtility.toBase64Encode(plainText)
     }
     @RequiresApi(Build.VERSION_CODES.O)
     fun toBase64Dncode(encodedString: String): MutableLiveData<EncryptionData> {
-        return encryptionUtility.toBase64Decode(encodedString);
+        return encryptionUtility.toBase64Decode(encodedString)
     }
     fun md5Digest(plainText: String): MutableLiveData<EncryptionData> {
-        return encryptionUtility.md5Digest(plainText);
+        return encryptionUtility.md5Digest(plainText)
     }
     fun md5Filechecksum(filePath: String): MutableLiveData<EncryptionData> {
-        return encryptionUtility.md5Filechecksum(filePath);
+        return encryptionUtility.md5Filechecksum(filePath)
     }
 
 }
