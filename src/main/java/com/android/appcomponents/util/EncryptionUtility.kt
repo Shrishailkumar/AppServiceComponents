@@ -45,8 +45,6 @@ object EncryptionUtility {
             return encryptionData
 
     }
-
-
     fun generateKey(): SecretKey? {
         val keyGenerator = KeyGenerator.getInstance("AES")
         keyGenerator.init(128)
