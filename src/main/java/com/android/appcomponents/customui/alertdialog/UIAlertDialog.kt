@@ -24,12 +24,29 @@ class UIAlertDialog {
          * @param context
          * @return AlertDialog
          * */
-        fun build(
+        /*fun build(
             context: Activity
         ): AlertDialog {
             val alertDialog =
                 AlertDialog.Builder(context, R.style.full_screen_dialog)
                     .setView(R.layout.ui_alert_dilaog)
+            val alert: AlertDialog = alertDialog.create()
+            alert.show()
+            return alert
+        }*/
+
+        /***
+         * core method For Alert Dialog
+         * @param context
+         * @return AlertDialog
+         * */
+        fun build(
+            context: Activity,
+            view: View
+        ): AlertDialog {
+            val alertDialog =
+                AlertDialog.Builder(context, R.style.full_screen_dialog)
+                    .setView(view)
             val alert: AlertDialog = alertDialog.create()
             alert.show()
             return alert
