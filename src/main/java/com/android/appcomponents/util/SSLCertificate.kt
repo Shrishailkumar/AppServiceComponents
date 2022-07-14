@@ -37,21 +37,30 @@ object SSLCertificate {
 
     fun sendVolleyPinned(resourceId : Int,context : Context) : SSLSocketFactory {
 
-        val sslContext = SSLContext.getInstance("TLS")
+        var sslContext = SSLContext.getInstance("TLS")
         try {
             val cf = CertificateFactory.getInstance("X.509")
             val caStream = BufferedInputStream(context.resources.openRawResource(resourceId))
             val ca = cf.generateCertificate(caStream)
             caStream.close()
 
-            val keyStore = KeyStore.getInstance(KeyStore.getDefaultType())
-            keyStore.load(null, null)
-            keyStore.setCertificateEntry("ca", ca)
+            // Create a KeyStore containing our trusted CAs
+            val keyStoreType = KeyStore.getDefaultType()
+            val trusted = KeyStore.getInstance(keyStoreType)
+            trusted.load(null, null)
+            trusted.setCertificateEntry("ca", ca)
 
-            val trustManagerAlgorithm = TrustManagerFactory.getDefaultAlgorithm()
-            val trustManagerFactory = TrustManagerFactory.getInstance(trustManagerAlgorithm)
-            trustManagerFactory.init(keyStore)
-            sslContext.init(null, trustManagerFactory.trustManagers, null)
+            // Create a TrustManager that trusts the CAs in our KeyStore
+            // Create a TrustManager that trusts the CAs in our KeyStore
+            val tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm()
+            val tmf = TrustManagerFactory.getInstance(tmfAlgorithm)
+            tmf.init(trusted)
+
+
+            // Create an SSLContext that uses our TrustManager
+            sslContext.init(null, tmf.trustManagers, null)
+
+
         } catch (e: Throwable) {
             println(e)
 
