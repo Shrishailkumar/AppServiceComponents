@@ -9,6 +9,8 @@ import com.android.appcomponents.model.EncryptionData
 import com.android.appcomponents.model.SecreteKeyData
 import com.android.appcomponents.util.EncryptionUtility
 import com.zensar.aes.AESCrypt
+import java.security.PrivateKey
+import java.security.PublicKey
 
 class EncryptionViewModal : ViewModel() {
     val encryptionUtility = EncryptionUtility
@@ -19,6 +21,12 @@ class EncryptionViewModal : ViewModel() {
     val _decryptResponse = MutableLiveData<String>()
     val decryptedResponse: LiveData<String> = _decryptResponse
 
+    val _rsaEncryptResponse = MutableLiveData<String>()
+    val rsaEncryptResponse: LiveData<String> = _rsaEncryptResponse
+
+    val _rsaDecryptResponse = MutableLiveData<String>()
+    val rsaDecryptResponse: LiveData<String> = _rsaDecryptResponse
+
     fun aesEncryptAlgorithm(password: String, plaintext: String) {
 
         _EncryptResponse.postValue(aesEncrypt.encrypt(password, plaintext))
@@ -28,6 +36,15 @@ class EncryptionViewModal : ViewModel() {
     fun aesDecryptionAlgorithm(password: String, plaintext: String) {
 
         _decryptResponse.postValue(aesEncrypt.decrypt(password, plaintext))
+    }
+
+    fun rsaEncryptAlgorithm(plaintext: String,publicKey : PublicKey) {
+
+        _rsaEncryptResponse.postValue(encryptionUtility.rsaEncrption(plaintext, publicKey))
+    }
+    fun rsaDecryptAlgorithm(plaintext: String,privateKey: PrivateKey ) {
+
+        _rsaDecryptResponse.postValue(encryptionUtility.rsaDecryption(plaintext, privateKey))
     }
 
     fun hMacSha256Algoritham(key: String, data: String): MutableLiveData<EncryptionData> {

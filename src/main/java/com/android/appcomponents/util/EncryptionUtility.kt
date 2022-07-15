@@ -7,6 +7,7 @@ import com.android.appcomponents.model.EncryptionData
 import com.android.appcomponents.model.SecreteKeyData
 import java.io.FileInputStream
 import java.io.IOException
+import java.math.BigInteger
 import java.security.*
 import java.util.*
 import javax.crypto.Cipher
@@ -15,6 +16,7 @@ import javax.crypto.Mac
 import javax.crypto.SecretKey
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
+
 
 object EncryptionUtility {
 
@@ -39,7 +41,7 @@ object EncryptionUtility {
             val ivSpec = IvParameterSpec(IV)
             cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec)
 
-            val decryptedText = cipher.doFinal(cipherText)
+            val decryptedText = cipher.doFinal(stringToBytes(cipherText.toString()))
             val encriptedData = EncryptionData(decryptedText.toString())
             encryptionData.postValue(encriptedData)
             return encryptionData
@@ -156,4 +158,32 @@ object EncryptionUtility {
         return encryptionData
     }
 
+
+    fun rsaEncrption(plain: String,publicKey :PublicKey): String? {
+        val cipher: Cipher = Cipher.getInstance("RSA")
+        cipher.init(Cipher.ENCRYPT_MODE, publicKey)
+        val encryptedBytes = cipher.doFinal(plain.toByteArray())
+        val encrypted = bytesToString(encryptedBytes)
+        return encrypted
+    }
+
+
+    fun rsaDecryption(result: String,privateKey: PrivateKey): String? {
+        val cipher = Cipher.getInstance("RSA")
+        cipher.init(Cipher.DECRYPT_MODE, privateKey)
+        val decryptedBytes = cipher.doFinal(stringToBytes(result))
+        val decrypted = String(decryptedBytes)
+        return decrypted
+    }
+    fun bytesToString(b: ByteArray): String? {
+        val b2 = ByteArray(b.size + 1)
+        b2[0] = 1
+        System.arraycopy(b, 0, b2, 1, b.size)
+        return BigInteger(b2).toString(36)
+    }
+
+    fun stringToBytes(s: String?): ByteArray? {
+        val b2: ByteArray = BigInteger(s, 36).toByteArray()
+        return Arrays.copyOfRange(b2, 1, b2.size)
+    }
 }
