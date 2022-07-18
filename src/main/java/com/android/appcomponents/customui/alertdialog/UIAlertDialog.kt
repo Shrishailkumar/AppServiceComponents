@@ -24,7 +24,7 @@ class UIAlertDialog {
          * @param context
          * @return AlertDialog
          * */
-        /*fun build(
+        fun build(
             context: Activity
         ): AlertDialog {
             val alertDialog =
@@ -33,7 +33,7 @@ class UIAlertDialog {
             val alert: AlertDialog = alertDialog.create()
             alert.show()
             return alert
-        }*/
+        }
 
         /***
          * core method For Alert Dialog
