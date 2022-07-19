@@ -47,17 +47,9 @@ object EncryptionUtility {
             return encryptionData
 
     }
-    fun generateKey(): SecretKey? {
-        val keyGenerator = KeyGenerator.getInstance("AES")
-        keyGenerator.init(128)
-        return keyGenerator.generateKey()
-    }
-    fun generateIv(): IvParameterSpec? {
-        val iv = ByteArray(16)
-        SecureRandom().nextBytes(iv)
-        return IvParameterSpec(iv)
-    }
-
+    /**
+     * Method for hMacSha256Algoritham
+     */
 
     fun hMacSha256Algoritham(key: String, data: String): MutableLiveData<EncryptionData> {
         val encriptionData = MutableLiveData<EncryptionData>()
@@ -77,7 +69,9 @@ object EncryptionUtility {
         encriptionData.postValue(encriptedData)
         return encriptionData
     }
-
+    /**
+     * Method to convert bytearray to string
+     */
     private fun toHexString(bytes: ByteArray): String {
         val sb = StringBuilder(bytes.size * 2)
         val formatter = Formatter(sb)
@@ -86,7 +80,9 @@ object EncryptionUtility {
         }
         return sb.toString()
     }
-
+    /**
+     * Method to generate secrete key
+     */
     fun generateSecreteKey(bitValue: Int): MutableLiveData<SecreteKeyData>? {
         val secretKeyData = MutableLiveData<SecreteKeyData>()
         val keyGenerator: KeyGenerator
@@ -102,6 +98,9 @@ object EncryptionUtility {
         secretKeyData.postValue(secreteKeyValue)
         return secretKeyData
     }
+    /**
+     * Method to encode using base64 algorithm
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     fun toBase64Encode(plainText: String): MutableLiveData<EncryptionData> {
         val encriptionData = MutableLiveData<EncryptionData>()
@@ -111,7 +110,9 @@ object EncryptionUtility {
         encriptionData.postValue(encriptedData)
         return encriptionData
     }
-
+    /**
+     * Method to decode using base64 algorithm
+     */
     @RequiresApi(Build.VERSION_CODES.O)
     fun toBase64Decode(encodedString: String): MutableLiveData<EncryptionData> {
         val decreptionData = MutableLiveData<EncryptionData>()
@@ -121,7 +122,9 @@ object EncryptionUtility {
         decreptionData.postValue(encriptedData)
         return decreptionData
     }
-
+    /**
+     * Method for md5Digest
+     */
     fun md5Digest(input: String): MutableLiveData<EncryptionData> {
         val encryptionData = MutableLiveData<EncryptionData>()
         val md: MessageDigest
@@ -135,6 +138,9 @@ object EncryptionUtility {
         return encryptionData
     }
 
+    /**
+     * Method for md5Filechecksum
+     */
      fun md5Filechecksum(filePath: String): MutableLiveData<EncryptionData> {
          val encryptionData = MutableLiveData<EncryptionData>()
         var md: MessageDigest
@@ -157,7 +163,10 @@ object EncryptionUtility {
          encryptionData.postValue(encriptedData)
         return encryptionData
     }
-
+    /**
+     * Method to encrypt using RSA algorithm
+     * @return String
+     */
 
     fun rsaEncrption(plain: String,publicKey :PublicKey): String? {
         val cipher: Cipher = Cipher.getInstance("RSA")
@@ -167,7 +176,10 @@ object EncryptionUtility {
         return encrypted
     }
 
-
+    /**
+     * Method to Decrypt using RSA algorithm
+     * @return String
+     */
     fun rsaDecryption(result: String,privateKey: PrivateKey): String? {
         val cipher = Cipher.getInstance("RSA")
         cipher.init(Cipher.DECRYPT_MODE, privateKey)
@@ -175,13 +187,20 @@ object EncryptionUtility {
         val decrypted = String(decryptedBytes)
         return decrypted
     }
+    /**
+     * Method to comvert byte to string
+     * @return String
+     */
     fun bytesToString(b: ByteArray): String? {
         val b2 = ByteArray(b.size + 1)
         b2[0] = 1
         System.arraycopy(b, 0, b2, 1, b.size)
         return BigInteger(b2).toString(36)
     }
-
+    /**
+     * Method to convert string to byte
+     * @return ByteArray
+     */
     fun stringToBytes(s: String?): ByteArray? {
         val b2: ByteArray = BigInteger(s, 36).toByteArray()
         return Arrays.copyOfRange(b2, 1, b2.size)
