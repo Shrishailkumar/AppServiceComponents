@@ -117,6 +117,10 @@ class UISnackBar(private val context: Context) {
         tfActionBtn = actionTypeface
     }
 
+    /**
+     * Method to build custom snackbar. Propertied like background color, font, text can be set using setter method
+     * @param view - view of snackbar you customized
+     */
     private fun makeSnackBar(view: View) {
         snackbar = Snackbar.make(view, message, duration)
         val snackBarLayout = snackbar.view as Snackbar.SnackbarLayout // Frame Layout
@@ -172,6 +176,10 @@ class UISnackBar(private val context: Context) {
         }
     }
 
+    /**
+     * Method to show snackbar
+     * @return - UISnackBar object
+     */
     fun show(): UISnackBar {
         if (coordinateView != null && coordinateView is CoordinatorLayout) {
             makeSnackBar(coordinateView!!)
@@ -184,6 +192,10 @@ class UISnackBar(private val context: Context) {
         return this
     }
 
+    /**
+     * Method to show snackbar
+     * @param func - click event
+     */
     inline fun show(func: UISnackBar.() -> Unit): UISnackBar {
         this.func()
         return this.show()

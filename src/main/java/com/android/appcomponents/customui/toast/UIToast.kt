@@ -128,12 +128,22 @@ class UIToast(private val context: Context) {
 
     companion object {
 
+        /**
+         * @param context - activity context
+         * @param message - text you want to show
+         * @param duration - duration of toast
+         */
         fun showToast(context: Context, message: String, duration: Int): Toast {
             return UIToast(context)
                 .setMessage(message)
                 .createToast(duration)
         }
 
+        /**
+         * @param context - activity context
+         * @param message - text you want to show
+         * @param duration - duration of toast
+         */
         fun showToastPosition(context: Context, message: String, duration: Int, position: Int): Toast {
             return UIToast(context)
                 .setMessage(message)
@@ -141,6 +151,12 @@ class UIToast(private val context: Context) {
                 .createToast(duration)
         }
 
+        /**
+         * @param context - activity context
+         * @param message - text you want to show
+         * @param duration - duration of toast
+         * @param icon - icon from a drawable folder
+         */
         fun showToast(context: Context, message: String, duration: Int, icon: Int): Toast {
             return UIToast(context)
                 .setIcon(icon)
@@ -148,6 +164,14 @@ class UIToast(private val context: Context) {
                 .createToast(duration)
         }
 
+        /**
+         * @param context - activity context
+         * @param message - text you want to show
+         * @param duration - duration of toast
+         * @param icon - icon from a drawable folder
+         * @param textColor - color of a toast text
+         * @param cardBackgroundColor - background color of a toast
+         */
         fun showToast(
             context: Context,
             message: String,
@@ -164,6 +188,15 @@ class UIToast(private val context: Context) {
                 .createToast(duration)
         }
 
+        /**
+         * @param context - activity context
+         * @param message - text you want to show
+         * @param duration - duration of toast
+         * @param icon - icon from a drawable folder
+         * @param textColor - color of a toast text
+         * @param cardBackgroundColor - background color of a toast
+         * @param cornerRadius - corner radius of the toast makes the corner curvy
+         */
         fun showToast(
             context: Context,
             message: String?,
@@ -183,6 +216,15 @@ class UIToast(private val context: Context) {
                 .createToast(duration)
         }
 
+        /**
+         * @param context - activity context
+         * @param message - text you want to show
+         * @param duration - duration of toast
+         * @param textColor - color of a toast text
+         * @param cardBackgroundColor - background color of a toast
+         * @param cornerRadius - corner radius of the toast makes the corner curvy
+         * @param elevation - it will give a shadow effect of the toast
+         */
         fun showToast(
             context: Context,
             message: String?,

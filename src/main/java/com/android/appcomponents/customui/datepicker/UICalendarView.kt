@@ -67,6 +67,9 @@ class UICalendarView @JvmOverloads constructor(
         initializeCalendar()
     }
 
+    /**
+     * Method is to initialize calendar layout with custom input
+     */
     private fun initializeCalendar() {
         val inflate = mContext!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         view = inflate.inflate(R.layout.ui_calendar_layout, this, true)
@@ -157,6 +160,9 @@ class UICalendarView @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Method is to set days in the calendar layout
+     */
     private fun setDaysInCalendar() {
         val calendar = Calendar.getInstance(locale)
         calendar.time = currentCalendar!!.time
@@ -215,6 +221,10 @@ class UICalendarView @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Method will either show all days in a particular month or highlight previous month's days with particular month
+     *  @param currentDate - current date
+     */
     private fun clearDayOfTheMonthStyle(currentDate: Date?) {
         if (currentDate != null) {
             val calendar = getTodaysCalendar()
@@ -227,16 +237,28 @@ class UICalendarView @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Method to get days of month
+     * @param currentCalendar - calendar of current month
+     */
     private fun getDayOfMonthText(currentCalendar: Calendar): DayViewCell {
         return getView(currentCalendar) as DayViewCell
     }
 
+    /**
+     * Method to get day index by date
+     * @param currentCalendar - calendar of current month
+     */
     private fun getDayIndexByDate(currentCalendar: Calendar): Int {
         val monthOffset = getMonthOffset(currentCalendar)
         val currentDay = currentCalendar[Calendar.DAY_OF_MONTH]
         return currentDay + monthOffset
     }
 
+    /**
+     * Method to get month
+     * @param currentCalendar - calendar of current month
+     */
     private fun getMonthOffset(currentCalendar: Calendar): Int {
         val calendar = Calendar.getInstance()
         calendar.firstDayOfWeek = initDayOfWeek
@@ -255,6 +277,11 @@ class UICalendarView @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Method to get week based on index
+     * @param weekIndex - week index of a month
+     * @param currentCalendar - current month calendar
+     */
     private fun getWeekIndex(weekIndex: Int, currentCalendar: Calendar): Int {
         val firstDayWeekPosition = currentCalendar.firstDayOfWeek
         return if (firstDayWeekPosition == 1) {
@@ -268,17 +295,29 @@ class UICalendarView @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Method to get view of calendar
+     * @param currentCalendar - current month calendar
+     * @return view of a calendar
+     */
     private fun getView(currentCalendar: Calendar): View {
         val index = getDayIndexByDate(currentCalendar)
         return view!!.findViewWithTag(DAY_OF_MONTH_TEXT + index)
     }
 
+    /**
+     * Method to get today's calendar
+     */
     private fun getTodaysCalendar(): Calendar {
         val currentCalendar = Calendar.getInstance(mContext!!.resources.configuration.locale)
         currentCalendar.firstDayOfWeek = initDayOfWeek
         return currentCalendar
     }
 
+    /**
+     * Method to notify calendar changes
+     * @param currentCalendar - current month calendar
+     */
     @SuppressLint("DefaultLocale")
     fun refreshCalendar(currentCalendar: Calendar?) {
         this.currentCalendar = currentCalendar
@@ -295,7 +334,10 @@ class UICalendarView @JvmOverloads constructor(
         setDaysInCalendar()
     }
 
-
+    /**
+     * Method to mark day as current day
+     * @param calendar - current month calendar
+     */
     private fun markDayAsCurrentDay(calendar: Calendar?) {
         if (calendar != null && UICalendarUtil.isToday(calendar)) {
             val dayOfMonth: DayViewCell = getDayOfMonthText(calendar)
@@ -303,6 +345,10 @@ class UICalendarView @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Method to mark selected day
+     * @param currentDate - current date
+     */
     private fun markDayAsSelectedDay(currentDate: Date) {
         val currentCalendar = getTodaysCalendar()
         currentCalendar.firstDayOfWeek = initDayOfWeek
@@ -320,10 +366,18 @@ class UICalendarView @JvmOverloads constructor(
         view.setTextColor(selectedDayTextColor)
     }
 
+    /**
+     * Method to store last selected date value
+     * @param currentDate - date
+     */
     private fun storeLastValues(currentDate: Date) {
         lastSelectedDay = currentDate
     }
 
+    /**
+     * Method to set listener for calendar event click
+     * @param uiCalendarListener - callback method for click, long press & month changed
+     */
     fun setUICalendarListener(uiCalendarListener: UICalendarListener) {
         this.uiCalendarListener = uiCalendarListener
     }

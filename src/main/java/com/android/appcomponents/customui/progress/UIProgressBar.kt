@@ -16,6 +16,32 @@ class UIProgressBar {
 
         fun showProgressBar(
             context: Context?,
+            progressColor: Int,
+        ): UIProgressDialog? {
+            try {
+                if (context != null) {
+                    if (uiProgressDialog == null) {
+                        uiProgressDialog = UIProgressDialog(context)
+                    }
+                    if (!uiProgressDialog?.isShowing!!) {
+                        uiProgressDialog!!.setCancelable(true)
+                        if (context is Activity && !(context).isFinishing) {
+                            val progressBar: ProgressBar =
+                                uiProgressDialog!!.findViewById(R.id.progressBar)
+                            progressBar.indeterminateDrawable.colorFilter =
+                                PorterDuffColorFilter(progressColor, PorterDuff.Mode.MULTIPLY)
+                            uiProgressDialog!!.show()
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            return uiProgressDialog
+        }
+
+        fun showProgressBar(
+            context: Context?,
             message: String?,
             isCancellable: Boolean
         ): UIProgressDialog? {
@@ -85,6 +111,7 @@ class UIProgressBar {
             return uiProgressDialog
         }
 
+
         fun showProgressBar(
             context: Context?,
             message: String?,
@@ -122,6 +149,9 @@ class UIProgressBar {
             return uiProgressDialog
         }
 
+        /**
+         * It dismiss/hide the progress dialog if it's showing
+         */
         fun hideProgressBar() {
             if (uiProgressDialog != null && uiProgressDialog!!.isShowing) {
                 try {

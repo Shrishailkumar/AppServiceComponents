@@ -3,6 +3,11 @@ package com.android.appcomponents.customui.recyclerview
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
+/**
+ * Method to show error message if any issue in binding variable mismatches
+ * @param variableId - variable ID passed to convert BR class to String
+ * @param binding - view binding object
+ */
 internal fun buildErrorMessage(
     variableId: Int,
     binding: ViewDataBinding
