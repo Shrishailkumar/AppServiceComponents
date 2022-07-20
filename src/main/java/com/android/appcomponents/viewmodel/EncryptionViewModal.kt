@@ -90,7 +90,7 @@ class EncryptionViewModal : ViewModel() {
      * @return livedata (MutableLiveData<EncryptionData>)
      */
     @RequiresApi(Build.VERSION_CODES.O)
-    fun toBase64Dncode(encodedString: String): MutableLiveData<EncryptionData> {
+    fun toBase64Decode(encodedString: String): MutableLiveData<EncryptionData> {
         return encryptionUtility.toBase64Decode(encodedString)
     }
     /**

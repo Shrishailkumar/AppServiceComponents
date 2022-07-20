@@ -16,7 +16,10 @@ import java.security.cert.X509Certificate
 import javax.net.ssl.*
 
 object SSLCertificate {
-
+    /**
+     * Method for OkHTTPPinning. It will take hostName and secreteKey as parameter
+     * @return OkHttpClient
+     */
 
     fun sendOkHttpPinned(hostname : String,sha256Key : String) : OkHttpClient? {
 
@@ -68,7 +71,12 @@ object SSLCertificate {
         return  sslContext.socketFactory
     }
 
-    fun sendManuallyCustomPinned(key256HashCode:String,hostName:String,postNumber:Int):Boolean {
+    /**
+     * Method to Verify Hostname is trustable or not. It will take hostName, secreteKey and portNumeber as parameter
+     * @return Boolean.
+     */
+
+    fun sendManuallyCustomPinned(key256HashCode:String,hostName:String,portNumber:Int):Boolean {
              var status :Boolean = false
             try {
                 // Disable trust manager checks - we'll check the certificate manually ourselves later
@@ -84,7 +92,7 @@ object SSLCertificate {
                 val context = SSLContext.getInstance("TLS")
                 context.init(null, trustManager, null)
 
-                val socket = context.socketFactory.createSocket(hostName, postNumber) as SSLSocket
+                val socket = context.socketFactory.createSocket(hostName, portNumber) as SSLSocket
 
                 val certs = socket.session.peerCertificates
 
