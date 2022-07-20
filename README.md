@@ -50,6 +50,105 @@ Developers of the project, who will be coding the simislar boiler late code whic
  - The Barcode scanner is an important component, the ML kit of android is used for scanning the barcode.
  - The results are retuned back to the user in different forms
  
+# Data Security Services
+
+### AES Encryption Algorithm:
+Should pass password and input text as params. Both params are String
+
+```
+private lateinit var encryptionViewModal: EncryptionViewModal
+encryptionViewModal = ViewModelProvider(this).get(EncryptionViewModal::class.java)
+encryptionViewModal.aesEncryptAlgorithm("123456", input)
+```
+
+### AES Decryption Algorithm:
+Should pass password and input text as params. Both params are String. Here in below code input is encrypted text. The passwordshould be same for both encryption and decryption .
+
+```
+private lateinit var encryptionViewModal: EncryptionViewModal
+encryptionViewModal = ViewModelProvider(this).get(EncryptionViewModal::class.java)
+encryptionViewModal.aesDecryptionAlgorithm("123456", input)
+```
+
+### Generate RSA Secrete Key:
+
+Below code is to generate RSA  Secrete key.
+
+```
+val kpg = KeyPairGenerator.getInstance("RSA");
+        kpg.initialize(1024);
+        rsaKey = kpg.genKeyPair();
+```
+
+### RSA Encryption Algorithm:
+Should pass input and  key as parameter. Input should be string and  key should be PublicKey. It returns encrypted value in string.
+```
+private lateinit var encryptionViewModal: EncryptionViewModal
+encryptionViewModal = ViewModelProvider(this).get(EncryptionViewModal::class.java)
+encryptionViewModal.rsaEncryptAlgorithm(input, rsaKey.public)
+```
+
+### RSA Decryption Algorithm:
+Should pass input and  key as parameter. Input should be string (Encrypted value) and  key should be private key. It returns Decrypted  value in string.
+```
+private lateinit var encryptionViewModal: EncryptionViewModal
+encryptionViewModal = ViewModelProvider(this).get(EncryptionViewModal::class.java)
+encryptionViewModal.rsaDecryptAlgorithm(input, rsaKey.private)
+```
+
+### hMacSha256Algoritham:
+Should pass input and  key as parameter. Input should be string  and  key is also string. It returns Livedata.
+```
+private lateinit var encryptionViewModal: EncryptionViewModal
+encryptionViewModal = ViewModelProvider(this).get(EncryptionViewModal::class.java)
+encryptionViewModal.hMacSha256Algoritham(key, input)
+```
+
+### Base64Encode:
+Should pass input as parameter. Input should be string . It returns Livedata.
+```
+private lateinit var encryptionViewModal: EncryptionViewModal
+encryptionViewModal = ViewModelProvider(this).get(EncryptionViewModal::class.java)
+encryptionViewModal.toBase64Encode(input)
+```
+### Base64Decode:
+Should pass input as parameter. Input should be string . It returns Livedata (Decrypted value).
+```
+private lateinit var encryptionViewModal: EncryptionViewModal
+encryptionViewModal = ViewModelProvider(this).get(EncryptionViewModal::class.java)
+encryptionViewModal.toBase64Dncode(input)
+```
+### md5Digest:
+Should pass input as parameter. Input should be string . It returns Livedata (Decrypted value).
+```
+private lateinit var encryptionViewModal: EncryptionViewModal
+encryptionViewModal = ViewModelProvider(this).get(EncryptionViewModal::class.java)
+encryptionViewModal.md5Digest(input)
+```
+
+
+### OkHTTP Certificate Pinnig:
+ Method for OkHTTPPinning. It will take hostName and secreteKey as parameter
+ return OkHttpClient 
+```
+ val client = SSLCertificate.sendOkHttpPinned("hostname", "YOUR SECRETE KEY")
+```
+
+
+### ManuallyCustomPinned:
+ Method to Verify Hostname is trustable or not. It will take hostName, secreteKey and portNumeber as parameter
+ if host name is trustable it will return true else return false
+```
+SSLCertificate.sendManuallyCustomPinned(
+                        "YOUR SECRETE KEY",
+                        "Your Host Name",
+                        Port number (INT)
+                    )
+```
+ 
+ 
+ 
+ 
  # UI Utiltiy Components:
  ### Snackbar:
 Initializing `UISnackBar` by passing activity context `this`. If it's a fragment use `context as Activity` as a constructor parameter.
