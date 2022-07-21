@@ -226,7 +226,7 @@ class LocationUtility(context: Context? = null) {
 }
 
 
-private fun checkLocationPermission(ctx: Context) {
+     fun checkLocationPermission(ctx: Context) {
 
     if (ActivityCompat.checkSelfPermission(
             ctx,

@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <uses-feature android:name="android.hardware.camera.level.full" />
     <uses-feature android:name="android.hardware.camera2.full" />
@@ -36,6 +37,11 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA0nenNuNUXv0CWB5FsCmoUksobg5idk38" />
+
+        <receiver
+            android:name=".geofence.GeofenceBroadcastReceiverWithoutMap"
+            android:exported="true" />
+
     </application>
 
 </manifest>
