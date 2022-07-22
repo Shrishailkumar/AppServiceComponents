@@ -1,21 +1,27 @@
 package com.android.appcomponents.util
 
 import android.Manifest
+import android.app.Activity
 import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.content.IntentSender
 import android.content.pm.PackageManager
+import android.location.LocationManager
+import android.os.Build
 import android.util.Log
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.android.appcomponents.AppContext.AppContext
 import com.android.appcomponents.geofence.GeofenceBroadcastReceiverWithoutMap
-import com.google.android.gms.location.Geofence
-import com.google.android.gms.location.GeofencingClient
-import com.google.android.gms.location.GeofencingRequest
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.*
+import com.google.android.gms.tasks.Task
 import java.util.*
 
-object GeofenceUtility {
 
+object GeofenceUtility {
+    val MY_PERMISSIONS_REQUEST_LOCATION = 100
     lateinit var geofencingClient: GeofencingClient
     var mGeofenceList: MutableList<Geofence>? = mutableListOf()
 
@@ -38,34 +44,92 @@ object GeofenceUtility {
             .build())
     }
 
-    fun addGeofence(geoLatitude: Double, geoLongitude: Double, geofenceRadius: Float) {
+    fun addGeofence(activity: Activity, geoLatitude: Double, geoLongitude: Double, geofenceRadius: Float) {
 
         geofencingClient = LocationServices.getGeofencingClient(AppContext.getContext()!!)
         createGeofenceObject(geoLatitude, geoLongitude, geofenceRadius)
 
-        if (ActivityCompat.checkSelfPermission(
-                AppContext.getContext()!!,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            AppContext.getContext()?.let { checkLocationPermission(it) }
+        if (AppContext.getContext()?.let {
+                ActivityCompat.checkSelfPermission(
+                    it,
+                    Manifest.permission.ACCESS_FINE_LOCATION)
+            } != PackageManager.PERMISSION_GRANTED
+            && AppContext.getContext()
+                ?.let { ActivityCompat.checkSelfPermission(it,
+                    Manifest.permission.ACCESS_COARSE_LOCATION)
+                } != PackageManager.PERMISSION_GRANTED)
+                {
+            ActivityCompat.requestPermissions(activity,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+
+        } else if ( AppContext.getContext()
+                ?.let { ActivityCompat.checkSelfPermission(it,
+                    Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+                } != PackageManager.PERMISSION_GRANTED) {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                ActivityCompat.requestPermissions(activity,
+                    arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION), 2)
+            }
         }
 
-        geofencingClient.addGeofences(getGeofencingRequest(), geofencePendingIntent)?.run {
-            addOnSuccessListener {
-                // Geofences added
-                Log.i("TAG", "Saving Geofence")
+       if (checkGPSEnabled(activity)) {
+           geofencingClient.addGeofences(getGeofencingRequest(), geofencePendingIntent)?.run {
+               addOnSuccessListener {
+                   // Geofences added
+                   Log.i("TAG", "Saving Geofence")
 
-            }
-            addOnFailureListener {
-                // Failed to add geofences
-                Log.i("TAG", "Failed to add geofences")
-            }
+               }
+               addOnFailureListener {
+                   // Failed to add geofences
+                   Log.i("TAG", "Failed to add Geofence")
+                   Toast.makeText(
+                       AppContext.getContext(),
+                       "Failed to add Geofence",
+                       Toast.LENGTH_LONG
+                   ).show()
+               }
+           }
+       }
+
+    }
+
+    private fun checkGPSEnabled(activity: Activity): Boolean {
+        val manager = activity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        if (manager.isProviderEnabled(LocationManager.GPS_PROVIDER).not()) {
+            return turnOnGPS(activity)
         }
+
+        return true
+    }
+
+    private fun turnOnGPS(activity: Activity): Boolean {
+        var isGpsEnable = false
+
+        val request = LocationRequest.create().apply {
+            interval = 2000
+            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        }
+        val builder = LocationSettingsRequest.Builder().addLocationRequest(request)
+        val client: SettingsClient = LocationServices.getSettingsClient(activity)
+        val task: Task<LocationSettingsResponse> = client.checkLocationSettings(builder.build())
+        task.addOnFailureListener {
+            if (it is ResolvableApiException) {
+                try {
+                    it.startResolutionForResult(activity, 12345)
+                } catch (sendEx: IntentSender.SendIntentException) {
+                }
+            }
+        }.addOnSuccessListener {
+            //here GPS is On
+            isGpsEnable =  true
+        }
+
+        return isGpsEnable
     }
 
     fun stopGeofence(){
-        geofencingClient?.removeGeofences(geofencePendingIntent)?.run {
+        geofencingClient.removeGeofences(geofencePendingIntent)?.run {
             addOnSuccessListener {
                 // Geofences removed
                 Log.i("TAG", "Removed Geofence")
@@ -90,7 +154,5 @@ object GeofenceUtility {
             addGeofences(mGeofenceList)
         }.build()
     }
-
-
 
 }
